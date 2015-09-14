@@ -14,7 +14,7 @@ class MyApplicationLoader extends ApplicationLoader{
 class MyComponents(context: Context) extends BuiltInComponentsFromContext(context) {
   lazy val router = new Routes(httpErrorHandler, applicationController, mainController, assets)
 
-  lazy val rpcImplementations = Seq[RpcEntry[_]]()
+  lazy val rpcImplementations = Seq[RpcEntry]()
   lazy val mainController = new MainController(rpcImplementations)
   lazy val applicationController = new controllers.Application()
   lazy val assets = new controllers.Assets(httpErrorHandler)

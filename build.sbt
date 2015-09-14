@@ -5,7 +5,6 @@ name := "rest-rpc-sample"
 libraryDependencies ++= Seq("org.specs2" %% "specs2-core" % "3.6.4" % "test")
 
 
-scalaVersion := "2.11.6"
 
 libraryDependencies += "com.qifun" %% "json-stream" % "0.2.3"
 
