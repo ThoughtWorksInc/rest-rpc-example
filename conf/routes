@@ -1,1 +1,14 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET        /                    controllers.Application.index
+GET        /add                 controllers.Application.add
+GET        /rpc/*rpc            com.thoughtworks.restRpc.callee.MainController.rpc(rpc)
+POST       /rpc/*rpc            com.thoughtworks.restRpc.callee.MainController.rpc(rpc)
+
+# Map static resources from the /public folder to the /assets URL path
+GET        /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+
 GET /user/:username githubApiSample.SampleController.getUserPage(username:String)

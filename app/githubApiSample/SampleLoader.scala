@@ -1,6 +1,7 @@
 package githubApiSample
 
 import com.ning.http.client.AsyncHttpClientConfig
+import com.thoughtworks.restRpc.callee.{MainController, RpcEntry}
 import com.thoughtworks.restRpc.play.PlayOutgoingJsonService
 import play.api.libs.ws.{WSAPI, WSClient}
 import proxy.{RestRpcOutgoingProxyFactory, RestRpcRouteConfigurationFactory}
@@ -19,7 +20,11 @@ class SampleLoader extends ApplicationLoader {
       lazy val outgoingJsonService = new PlayOutgoingJsonService("https://api.github.com", routeConfiguration, wsApi)(actorSystem.dispatcher)
       lazy val userRpc = RestRpcOutgoingProxyFactory.outgoingProxy_rpc_IUserRpc(outgoingJsonService)
       lazy val sampleController = new SampleController(userRpc)(actorSystem.dispatcher)
-      override lazy val router: Router = new Routes(httpErrorHandler, sampleController)
+      lazy val rpcImplementations = Seq[RpcEntry]()
+      lazy val mainController = new MainController(rpcImplementations)
+      lazy val applicationController = new controllers.Application()
+      lazy val assets = new controllers.Assets(httpErrorHandler)
+      override lazy val router: Router = new Routes(httpErrorHandler, applicationController, mainController, assets, sampleController)
     }
 
     components.application
