@@ -25,7 +25,11 @@ organization := "com.thoughtworks"
 
 name := "rest-rpc-sample"
 
+libraryDependencies += "org.specs2" %% "specs2-junit" % "3.6.4" % Test
+
 libraryDependencies += "org.specs2" %% "specs2-core" % "3.6.4" % Test
+
+libraryDependencies += specs2 % Test
 
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.
