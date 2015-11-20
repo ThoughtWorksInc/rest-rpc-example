@@ -13,6 +13,9 @@ class UserRpc extends IUserRpc {
     override def getSingleUser(username: String): IFuture1[User] = {
       val user = new User()
       user.name = "xiaoshao"
+      user.email ="zwshao@thoughtworks.com"
+      user.followers = 100
+      user.avatar_url = "http://s1.rui.au.reastatic.net/rui-static/img/rea-logo-v3.png"
       Future.successful(user)
     }
 }
