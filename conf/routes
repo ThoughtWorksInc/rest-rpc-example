@@ -1,1 +1,2 @@
-GET /user/:username githubApiSample.SampleController.getUserPage(username:String)
+GET        /user/:username        githubApiSample.SampleController.getUserPage(username:String)
+GET        /rpc/*url              com.thoughtworks.microbuilder.play.MainController.rpc(url:String)
